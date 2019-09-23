@@ -9,10 +9,10 @@ export function Camera({ onDetected }) {
       numOfWorkers: 2,
       locate: true,
       locator: {
-          patchSize: "x-small",
-          halfSample: false,
+          patchSize: "medium",
+          halfSample: true,
       },
-      frequency: 5,
+      frequency: 10,
       inputStream : {
         name : "Live",
         type : "LiveStream",
@@ -54,7 +54,7 @@ export function Camera({ onDetected }) {
         });
         Quagga.onDetected(data => {
           console.log('onDetected', data);
-          onDetected(data);
+          onDetected(data.codeResult.code.trim());
         });
     });
   }, []);

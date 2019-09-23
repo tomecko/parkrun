@@ -5,8 +5,8 @@ export function Records({ records }) {
     <div>
       <h2>Detected</h2>
       <ul>
-        {records.map((val, i) => (
-          <li key={i}>{val.codeResult.code}</li>
+        {records.map((record, i) => (
+          <li key={i}>{record}</li>
         ))}
       </ul>
     </div>
