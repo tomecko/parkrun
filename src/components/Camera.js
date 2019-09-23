@@ -9,7 +9,7 @@ export function Camera({ onDetected }) {
       numOfWorkers: 2,
       locate: true,
       locator: {
-          patchSize: "small",
+          patchSize: "x-small",
           halfSample: false,
       },
       frequency: 5,

@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import { css } from 'emotion';
 
-import './App.css';
-import { Camera } from './components';
-import { Records } from './components/Records';
+import { Camera, Records } from './components';
+import { validateAthleteCode } from './validation';
 
 function App() {
   const [detected, setDetected] = useState([]);
-  const addDetected = val => setDetected(detected.concat(val));
+  const addDetected = code => {
+    if (validateAthleteCode(code)) {
+      setDetected(detected.concat(code));
+    }
+  }
   return (
     <div className={css`
       height: 100%;
