@@ -1,24 +1,17 @@
 import React from 'react';
-import logo from './logo.svg';
+import barcodeReader from 'javascript-barcode-reader';
+
 import './App.css';
+import { Camera } from './components';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <header>Parkrun</header>
+      <Camera onCapture={x =>
+        console.log('onC', barcodeReader(x, { barcode: 'code-2of5' }).then(x => console.log(x)))} />
+      <div>records</div>
+      <div>actions</div>
     </div>
   );
 }
