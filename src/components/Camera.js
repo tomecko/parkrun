@@ -1,11 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Quagga from 'quagga';
 import { css } from 'emotion';
 
-export function Camera() {
-  const [detected, setDetected] = useState([]);
-  const addDetected = val => setDetected(detected.concat(val));
-
+export function Camera({ onDetected }) {
   useEffect(() => {
     console.log('useEffect');
     Quagga.init({
@@ -57,30 +54,31 @@ export function Camera() {
         });
         Quagga.onDetected(data => {
           console.log('onDetected', data);
-          addDetected(data);
+          onDetected(data);
         });
     });
   }, []);
 
   return (
-    <div>
-      <div
-        id="scanner"
-        className={css`
-          & canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-          }
-        `}
-      ></div>
-      <h2>Detected</h2>
-      <ul>
-        {detected.map((val, i) => (
-          <li key={i}>{val.codeResult.code}</li>
-        ))}
-      </ul>
-    </div>
+    <div
+      id="scanner"
+      className={css`
+        background: #222;
+        display: flex;
+        justify-content: center;
+        max-height: 50vh;
+        width: 100vw;
+        position: relative;
+        & canvas {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          max-height: 100%;
+          max-width: 100%;
+        }
+      `}
+    ></div>
   );
 }
 
