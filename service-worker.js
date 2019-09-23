@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/parkrun/precache-manifest.2fc83c6f18b780a126b3e1005c6f3c4e.js"
+  "/parkrun/precache-manifest.8b48d42e0f0609391bfcc7a30008911f.js"
 );
 
 self.addEventListener('message', (event) => {
