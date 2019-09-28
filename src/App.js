@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { css } from 'emotion';
 
 import { Camera, Records } from './components';
-import { validateAthleteCode } from './validation';
+import { validateCode } from './validation';
 
 function App() {
   const [detected, setDetected] = useState([]);
   const addDetected = code => {
-    if (validateAthleteCode(code)) {
+    if (validateCode('A')(code) || validateCode('P')(code)) {
       setDetected(val => val.concat({
         code,
         added: new Date(),

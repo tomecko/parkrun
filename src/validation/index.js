@@ -1,1 +1,1 @@
-export * from './validate-athlete-code';
+export * from './validate-code';
