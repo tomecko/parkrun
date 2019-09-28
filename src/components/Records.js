@@ -3,10 +3,14 @@ import React from 'react';
 export function Records({ records }) {
   return (
     <div>
-      <h2>Detected</h2>
+      <h6>Detected 830</h6>
       <ul>
-        {records.map((record, i) => (
-          <li key={i}>{record}</li>
+        {records.reverse().map((record, i) => (
+          <li key={i}>
+            {record.added.getHours()}:{record.added.getMinutes()}:{record.added.getSeconds()}
+            |
+            {record.code}
+          </li>
         ))}
       </ul>
     </div>

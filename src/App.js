@@ -8,7 +8,10 @@ function App() {
   const [detected, setDetected] = useState([]);
   const addDetected = code => {
     if (validateAthleteCode(code)) {
-      setDetected(detected.concat(code));
+      setDetected(val => val.concat({
+        code,
+        added: new Date(),
+      }));
     }
   }
   return (
