@@ -6,20 +6,42 @@ export function Camera({ onDetected }) {
   useEffect(() => {
     console.log('useEffect');
     Quagga.init({
-      numOfWorkers: 2,
+      numOfWorkers: window.navigator.hardwareConcurrency || 2,
       locate: true,
       locator: {
           patchSize: "medium",
-          halfSample: true,
+          halfSample: false,
       },
       frequency: 10,
       inputStream : {
         name : "Live",
         type : "LiveStream",
         target: document.querySelector('#scanner'),
+        area: {
+          top: "40%",
+          bottom: "40%",
+          left: "0%",
+          right: "0%",
+        },
+        width: {
+            min: 1100,
+        },
+        height: {
+            min: 800,
+        },
+        aspectRatio: {
+            min: 1,
+            max: 2,
+        },
       },
       decoder : {
-        readers : ["code_128_reader"]
+        readers : ["code_128_reader"],
+        debug: {
+          drawBoundingBox: true,
+          showFrequency: true,
+          drawScanline: true,
+          showPattern: true
+        },
       }
     }, function(err) {
         if (err) {
@@ -62,6 +84,7 @@ export function Camera({ onDetected }) {
   return (
     <div
       id="scanner"
+      onClick={() => onDetected('A000')}
       className={css`
         background: #222;
         display: flex;
